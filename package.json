@@ -1,14 +1,15 @@
 {
-  "name": "static-site",
+  "name": "readme-generator",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "This program creates a readme for a project based on the answer to questions.",
+  "type": "module",
+  "exports": "./index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "inquirer": "^6.3.1"
+    "inquirer": "^9.1.4"
   }
 }
