@@ -116,9 +116,24 @@ function readInputs() {
     let inquirerValue = readCheckbox("inquirer");
     let nodeJSValue = readCheckbox("node-js");
     let creditsValue = readDynamicField("Credit", credits);
+    const addCredit = (bool, text) => {
+        if (bool) {
+            creditsValue.push(text)
+        }
+    }
+    addCredit(w3validatorValue, "The changes were checked with [W3C Validator](https://validator.w3.org/).");
+    addCredit(w3schoolValue, "[W3School](https://www.w3schools.com/) was used as a reference for elements to use and good practice.");
+    addCredit(mdnValue, "The changes were checked with [W3C Validator](https://validator.w3.org/).");
+    addCredit(stackOverflowValue, "The changes were checked with [W3C Validator](https://validator.w3.org/).");
+    addCredit(bootstrapValue, "The changes were checked with [W3C Validator](https://validator.w3.org/).");
+    addCredit(jQueryValue, "The changes were checked with [W3C Validator](https://validator.w3.org/).");
+    addCredit(inquirerValue, "The changes were checked with [W3C Validator](https://validator.w3.org/).");
+    addCredit(nodeJSValue, "The changes were checked with [W3C Validator](https://validator.w3.org/).");
     let licenseValue = readCheckbox("license");
 
-
-    return [titleValue, descriptionValue, requirementValue, contentValue, installationValue, installationInstructionValue, usageValue, featuresValue, contributeValue, contributeInstructionValue, testsValue, w3validatorValue, w3schoolValue, mdnValue, stackOverflowValue, bootstrapValue, jQueryValue, inquirerValue, nodeJSValue, creditsValue, licenseValue]
-    
+    return new ReadmeObject(titleValue, descriptionValue, requirementValue, contentValue, installationValue, installationInstructionValue, usageValue, featuresValue, contributeValue, contributeInstructionValue, testsValue, creditsValue, licenseValue);
 }
+
+$('form').change(function(){
+    $('#markdown').html(readInputs().readme.split('\n').join("<br>"))
+});

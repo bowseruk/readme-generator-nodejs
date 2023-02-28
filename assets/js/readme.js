@@ -1,22 +1,53 @@
 // This class makes the readme
 class ReadmeObject {
-    constructor(title, description, usage) {
+    constructor(title, description, requirements, content, installation, installationInstruction, usage, features, contribute, contributeInstruction, tests, credits, license) {
         this.title = title;
         this.description = description;
+        if (requirements.length > 0) {
+            this._descriptionList = requirements;
+        } else {
+            this._descriptionList = false; 
+        }
+        this._contents = content;
+        if (installation) {
+            this._installation = installationInstruction;
+        } else {
+            this._installation = false; 
+        }
         this._usage = usage;
-        this._descriptionList = ["test1", "test2", "test3"];
-        this._license = true;
+        if (features.length > 0) {
+            this._features = features;
+        } else {
+            this._features = false; 
+        }
+        if (contribute) {
+            this._contribute = contributeInstruction;
+        } else {
+            this._contribute = false; 
+        }
+        if (credits.length > 0) {
+            this._credits = credits;
+        } else {
+            this._credits = false; 
+        }
+        if (tests.length > 0) {
+            this._tests = tests;
+        } else {
+            this._tests = false; 
+        }
+        this._license = license;
     };
     // This returns a formated list of requirements for the description
     get descriptionList() {
         if (this._descriptionList) {
-            return this._descriptionList.map(key => `\n- ${key}`).join("\n");
+            return "The project had the following requirements:" +
+            this._descriptionList.map(key => `\n\n- ${key}`).join("");
         }
         return "";
     };
     // This makes the first section with the title and description. And a list of requirements if it has been added.
     get descriptionSection() {
-        return `# ${this.title}\n\n## Description\n\n${this.description}\n${this.descriptionList}`;
+        return `# ${this.title}\n\n## Description\n\n${this.description}${this.descriptionList}`;
     }
     // This makes the contents section
     get contents() {
@@ -25,12 +56,12 @@ class ReadmeObject {
                 "\n\n- [Description](#description)" +
                 "\n\n- [Contents](#contents)" +
                 "\n\n- [Installation](#installation)" +
-                "\n\n- [Usage](#usage)" +
-                (this._features) ? "\n\n- [Features](#features)" : "" +
-                (this._contribute) ? "\n\n- [Contribute](#contribute)" : "" +
-                (this._tests) ? "\n\n- [Tests](#tests)" : "" +
-                "\n\n- [Credits](#credits)" +
-                (this._license) ? "\n\n- [License](#license)" : "";
+                "\n\n- [Usage](#usage)".concat(
+                (this._features) ? "\n\n- [Features](#features)" : "",
+                (this._contribute) ? "\n\n- [Contribute](#contribute)" : "",
+                (this._tests) ? "\n\n- [Tests](#tests)" : "") +
+                "\n\n- [Credits](#credits)".concat(
+                (this._license) ? "\n\n- [License](#license)" : "");
         }
         return "";
     }
@@ -49,7 +80,8 @@ class ReadmeObject {
     // This makes the features section
     get features() {
         if (this._features) {
-            return "## Features"
+            return "\n\n## Features\n\nThis project has the following features:" +
+            this._features.map(key => `\n\n- ${key}`).join("");
         }
         return "";
     }
@@ -65,15 +97,21 @@ class ReadmeObject {
     get tests() {
         if (this._tests) {
             return `\n\n## Tests` +
-                `\n\n${this._contribute}`;
+            this._tests.map(key => `\n\n- ${key}`).join("");;
         }
-        return "";
+        return "\n\n## Tests\n\nThere are currently no tests for this project.";
     }
     // This makes the credits section
     get credits() {
+        if (this._credits) {
+            return "\n\n## Credits" +
+            "\n\nThe following resources where important for this project." +
+            "\n\n- [Readme Generator](https://github.com/bowseruk/readme-generator-nodejs) for generating the readme." +
+            this._credits.map(key => `\n\n- ${key}`).join("");
+        }
         return "\n\n## Credits" +
             "\n\nThe following resources where important for this project." +
-            "\n\n- [Readme Generator](https://github.com/bowseruk/readme-generator-nodejs) for generating the readme.";
+            "\n\n- [Readme Generator](https://github.com/bowseruk/readme-generator-nodejs) for generating the readme."
     }
     // This makes the licence section
     get license() {

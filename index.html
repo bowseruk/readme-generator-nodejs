@@ -27,11 +27,11 @@
                         <form>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">
-                                    <h2>Readme Editor</h2>
+                                    <h2 class="card-subtitle">Readme Editor</h2>
                                 </li>
                                 <li class="list-group-item">
                                     <!-- Description Section -->
-                                    <h3>Project Overview</h3>
+                                    <h3 class="card-subtitle">Project Overview</h3>
                                     <div class="form-floating">
                                         <input class="form-control" placeholder="Project Title" id="title" name="title">
                                         <label type="text" for="title">Project Title</label>
@@ -47,7 +47,7 @@
                                 </li>
                                 <!-- Contents -->
                                 <li class="list-group-item">
-                                    <h3>Contents</h3>
+                                    <h3 class="card-subtitle">Contents</h3>
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" value="true" id="contents">
                                         <label class="form-check-label" for="contents">
@@ -57,7 +57,7 @@
                                 </li>
                                 <!-- Installation -->
                                 <li class="list-group-item">
-                                    <h3>Installation</h3>
+                                    <h3 class="card-subtitle">Installation</h3>
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" value="true" id="installation">
                                         <label class="form-check-label" for="installation">
@@ -73,7 +73,7 @@
 
                                 <!-- Usage -->
                                 <li class="list-group-item">
-                                    <h3>Usage</h3>
+                                    <h3 class="card-subtitle">Usage</h3>
                                     <div class="form-floating">
                                         <textarea class="form-control" placeholder="Project Usage" id="usage"
                                             name="usage"></textarea>
@@ -82,14 +82,14 @@
                                 </li>
                                 <!-- Features -->
                                 <li class="list-group-item">
-                                    <h3>Features</h3>
+                                    <h3 class="card-subtitle">Features</h3>
                                     <div id="feature-display"></div>
                                     <button id="add-feature" type="button">Add Feature</button>
                                     <button id="remove-feature" type="button">Remove Feature</button>
                                 </li>
                                 <!-- Contribute -->
                                 <li class="list-group-item">
-                                    <h3>Contribute</h3>
+                                    <h3 class="card-subtitle">Contribute</h3>
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" value="true" id="contribute">
                                         <label class="form-check-label" for="contribute">
@@ -104,14 +104,14 @@
                                 </li>
                                 <!-- Tests -->
                                 <li class="list-group-item">
-                                    <h3>Tests</h3>
+                                    <h3 class="card-subtitle">Tests</h3>
                                     <div id="test-display"></div>
                                     <button id="add-test" type="button">Add Test</button>
                                     <button id="remove-test" type="button">Remove Test</button>
                                 </li>
                                 <!-- Credits -->
                                 <li class="list-group-item">
-                                    <h3>Credits</h3>
+                                    <h3 class="card-subtitle">Credits</h3>
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" value="true" id="w3validator">
                                         <label class="form-check-label" for="w3validator">
@@ -131,7 +131,8 @@
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="true" id="stack-overflow">
+                                        <input class="form-check-input" type="checkbox" value="true"
+                                            id="stack-overflow">
                                         <label class="form-check-label" for="stack-overflow">
                                             Stack Overflow
                                         </label>
@@ -166,7 +167,7 @@
                                 </li>
                                 <!-- Add License -->
                                 <li class="list-group-item">
-                                    <h3>License</h3>
+                                    <h3 class="card-subtitle">License</h3>
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" value="true" id="license">
                                         <label class="form-check-label" for="license">
@@ -182,8 +183,14 @@
             <section class="col-lg-6">
                 <div class="card">
                     <div class="card-body">
-                        <code id="markdown"></code>
-
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <h2 class="card-title">Preview</h2>
+                            </li>
+                            <li class="list-group-item">
+                                <p id="markdown"></p>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </section>
