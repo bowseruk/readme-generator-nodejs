@@ -25,114 +25,156 @@
                 <div class="card">
                     <div class="card-body">
                         <form>
-                            <!-- Description Section -->
-                            <div class="form-floating">
-                                <input class="form-control" placeholder="Project Title" id="title" name="title">
-                                <label type="text" for="title">Project Title</label>
-                            </div>
-                            <div class="form-floating">
-                                <textarea class="form-control" placeholder="Project Description" id="description"
-                                    name="description"></textarea>
-                                <label for="description">Project Description</label>
-                            </div>
-                            <div id="requirement-display"></div>
-                            <button id="add-requirement" type="button">Add Requirement</button>
-                            <button id="remove-requirement" type="button">Remove Requirement</button>
-                            <!-- Contents -->
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="true" id="contents">
-                                <label class="form-check-label" for="contents">
-                                    Include Contents
-                                </label>
-                            </div>
-                            <!-- Installation -->
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="true" id="contents">
-                                <label class="form-check-label" for="contents">
-                                    Installation Steps Required
-                                </label>
-                            </div>
-                            <div class="form-floating">
-                                <textarea class="form-control" placeholder="Installation Instructions" id="usage"
-                                    name="usage"></textarea>
-                                <label for="usage">Installation Instructions</label>
-                            </div>
-                            <!-- Usage -->
-                            <div class="form-floating">
-                                <textarea class="form-control" placeholder="Project Usage" id="usage"
-                                    name="usage"></textarea>
-                                <label for="usage">Project Usage</label>
-                            </div>
-                            <!-- Features -->
-                            <div id="feature-display"></div>
-                            <button id="add-feature" type="button">Add Feature</button>
-                            <button id="remove-feature" type="button">Remove Feature</button>
-                            <!-- Contribute -->
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="true" id="w3school">
-                                <label class="form-check-label" for="w3school">
-                                    Contribute
-                                </label>
-                            </div>
-                            <!-- Credits -->
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="true" id="w3school">
-                                <label class="form-check-label" for="w3school">
-                                    W3 Validator
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="true" id="w3school">
-                                <label class="form-check-label" for="w3school">
-                                    W3School
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="true" id="mdn">
-                                <label class="form-check-label" for="mdn">
-                                    Mozilla Developer Network
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="true" id="mdn">
-                                <label class="form-check-label" for="mdn">
-                                    Stack Overflow
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="true" id="mdn">
-                                <label class="form-check-label" for="mdn">
-                                    Bootstrap
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="true" id="mdn">
-                                <label class="form-check-label" for="mdn">
-                                    JQuery
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="true" id="mdn">
-                                <label class="form-check-label" for="mdn">
-                                    Inquirer
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="true" id="mdn">
-                                <label class="form-check-label" for="mdn">
-                                    Node.js
-                                </label>
-                            </div>
-                            <div id="credit-display"></div>
-                            <button id="add-credit" type="button">Add Credit</button>
-                            <button id="remove-credit" type="button">Remove Credit</button>
-                            <!-- Add License -->
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="true" id="mdn">
-                                <label class="form-check-label" for="mdn">
-                                    Add License
-                                </label>
-                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <h2>Readme Editor</h2>
+                                </li>
+                                <li class="list-group-item">
+                                    <!-- Description Section -->
+                                    <h3>Project Overview</h3>
+                                    <div class="form-floating">
+                                        <input class="form-control" placeholder="Project Title" id="title" name="title">
+                                        <label type="text" for="title">Project Title</label>
+                                    </div>
+                                    <div class="form-floating">
+                                        <textarea class="form-control" placeholder="Project Description"
+                                            id="description" name="description"></textarea>
+                                        <label for="description">Project Description</label>
+                                    </div>
+                                    <div id="requirement-display"></div>
+                                    <button id="add-requirement" type="button">Add Requirement</button>
+                                    <button id="remove-requirement" type="button">Remove Requirement</button>
+                                </li>
+                                <!-- Contents -->
+                                <li class="list-group-item">
+                                    <h3>Contents</h3>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="true" id="contents">
+                                        <label class="form-check-label" for="contents">
+                                            Include Contents
+                                        </label>
+                                    </div>
+                                </li>
+                                <!-- Installation -->
+                                <li class="list-group-item">
+                                    <h3>Installation</h3>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="true" id="installation">
+                                        <label class="form-check-label" for="installation">
+                                            Installation Steps Required
+                                        </label>
+                                    </div>
+                                    <div class="form-floating">
+                                        <textarea class="form-control" placeholder="Installation Instructions"
+                                            id="installation-instructions" name="installation-instructions"></textarea>
+                                        <label for="installation-instructions">Installation Instructions</label>
+                                    </div>
+                                </li>
+
+                                <!-- Usage -->
+                                <li class="list-group-item">
+                                    <h3>Usage</h3>
+                                    <div class="form-floating">
+                                        <textarea class="form-control" placeholder="Project Usage" id="usage"
+                                            name="usage"></textarea>
+                                        <label for="usage">Project Usage</label>
+                                    </div>
+                                </li>
+                                <!-- Features -->
+                                <li class="list-group-item">
+                                    <h3>Features</h3>
+                                    <div id="feature-display"></div>
+                                    <button id="add-feature" type="button">Add Feature</button>
+                                    <button id="remove-feature" type="button">Remove Feature</button>
+                                </li>
+                                <!-- Contribute -->
+                                <li class="list-group-item">
+                                    <h3>Contribute</h3>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="true" id="contribute">
+                                        <label class="form-check-label" for="contribute">
+                                            Contribute
+                                        </label>
+                                    </div>
+                                    <div class="form-floating">
+                                        <textarea class="form-control" placeholder="Contribution Instructions"
+                                            id="contribute-instructions" name="contribute-instructions"></textarea>
+                                        <label for="contribute-instructions">Contribution Instructions</label>
+                                    </div>
+                                </li>
+                                <!-- Tests -->
+                                <li class="list-group-item">
+                                    <h3>Tests</h3>
+                                    <div id="test-display"></div>
+                                    <button id="add-test" type="button">Add Test</button>
+                                    <button id="remove-test" type="button">Remove Test</button>
+                                </li>
+                                <!-- Credits -->
+                                <li class="list-group-item">
+                                    <h3>Credits</h3>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="true" id="w3validator">
+                                        <label class="form-check-label" for="w3validator">
+                                            W3 Validator
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="true" id="w3school">
+                                        <label class="form-check-label" for="w3school">
+                                            W3School
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="true" id="mdn">
+                                        <label class="form-check-label" for="mdn">
+                                            Mozilla Developer Network
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="true" id="stack-overflow">
+                                        <label class="form-check-label" for="stack-overflow">
+                                            Stack Overflow
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="true" id="bootstrap">
+                                        <label class="form-check-label" for="bootstrap">
+                                            Bootstrap
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="true" id="j-query">
+                                        <label class="form-check-label" for="j-query">
+                                            JQuery
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="true" id="inquirer">
+                                        <label class="form-check-label" for="inquirer">
+                                            Inquirer
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="true" id="node-js">
+                                        <label class="form-check-label" for="node-js">
+                                            Node.js
+                                        </label>
+                                    </div>
+                                    <div id="credit-display"></div>
+                                    <button id="add-credit" type="button">Add Credit</button>
+                                    <button id="remove-credit" type="button">Remove Credit</button>
+                                </li>
+                                <!-- Add License -->
+                                <li class="list-group-item">
+                                    <h3>License</h3>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="true" id="license">
+                                        <label class="form-check-label" for="license">
+                                            Add License
+                                        </label>
+                                    </div>
+                                </li>
+                            </ul>
                         </form>
                     </div>
                 </div>
@@ -154,6 +196,7 @@
     <!-- JS Query -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <!-- Custom JS -->
+    <script src="./assets/js/readme.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
 

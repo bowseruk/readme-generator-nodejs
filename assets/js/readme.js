@@ -1,5 +1,5 @@
 // This class makes the readme
-export default class ReadmeObject {
+class ReadmeObject {
     constructor(title, description, usage) {
         this.title = title;
         this.description = description;
@@ -82,6 +82,7 @@ export default class ReadmeObject {
         }
         return "";
     }
+    // This puts all the sections together to make a new readme
     get readme() {
         return this.descriptionSection +
             this.contents +
