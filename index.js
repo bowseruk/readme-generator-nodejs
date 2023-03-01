@@ -37,7 +37,7 @@ const installationQuestion = [
 ]
 // These are the questions for the usage section of the readme
 const usageQuestions = [
-    new Question("input", "screenshotURL", "Pleaase give the link to the screenshot, or type None for no link:"),
+    new Question("input", "screenshotURL", "Please give the link to the screenshot, or type None for no link:"),
     new Question("input", "videoURL", "Please give the link to the video walkthrough, or type None for no link:"),
     new Question("input", "usage", "Describe how to use the project:")
 ]
@@ -81,7 +81,7 @@ const licenseQuestions = [
 const questionsQuestions = [
     new Question("confirm", "gitHub", "Ask users to leave a message on github discussion on the repo?"),
     new Question("input", "email", "Type a contact email, or type none to skip:"),
-    new Question("input", "githubProfle", "Type a Github Username, or type none to skip:")
+    new Question("input", "githubProfile", "Type a Github Username, or type none to skip:")
 ]
 
 function descriptionSection() {
@@ -404,10 +404,10 @@ function questionsSection() {
         } else {
             readmeInput.questions = true;
         }
-        if (answers.githubProfle.toLowerCase() === "none") {
-            readmeInput.githubProfle = false;
+        if (answers.githubProfile.toLowerCase() === "none") {
+            readmeInput.githubProfile = false;
         } else {
-            readmeInput.githubProfle = answers.githubProfle;
+            readmeInput.githubProfile= answers.githubProfile;
         }
         endOfChain()
     })

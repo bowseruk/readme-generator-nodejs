@@ -173,7 +173,7 @@ function readInputs() {
     input.questions = readCheckbox("show-questions");
     input.githubDiscussion = readCheckbox("github-discussion");
     input.email = readField("email");
-    input.githubProfle = readField("github-profile");
+    input.githubProfile = readField("github-profile");
     // Turn the content into a readme object
     return new ReadmeObject(input);
 }

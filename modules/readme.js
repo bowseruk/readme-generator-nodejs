@@ -15,7 +15,7 @@ export default class ReadmeObject {
         this.credits = arg.credits;
         this.tests = arg.tests;
         this.setLicense(arg.licenseFile, arg.license);
-        this.setQuestions(arg.questions, arg.githubDiscussion, arg.email);
+        this.setQuestions(arg.questions, arg.githubDiscussion, arg.email, arg.githubProfile);
     };
     // helper functions
     checkLength(property) {
@@ -47,10 +47,11 @@ export default class ReadmeObject {
         this.licenseFile = fileFlag;
         this.license = license;
     }
-    setQuestions(flag, github, email) {
+    setQuestions(flag, github, email, username) {
         this.showQuestions = flag;
         this.contactEmail = email;
         this.contactGithub = github;
+        this.githubProfile = username;
     }
     // To construct the page
     makeTitle(text, html = false) {
@@ -210,7 +211,8 @@ export default class ReadmeObject {
                 this.makeList(
                     "".concat(
                         (this._contactEmail) ? this.makeListObject(`Email: ${this._contactEmail}`, html) : "",
-                        (this._contactGithub) ? this.makeListObject(`Github Discussion - Add a discussion to this repo.`, html) : "")
+                        (this._contactGithub) ? this.makeListObject(`Github Discussion - Add a discussion to this repo.`, html) : "",
+                        (this._githubProfile) ? this.makeListObject(`My Github Username is ${this.makeLink(`https://github.com/${this._githubProfile.toLowerCase()}`, this._githubProfile, html)}. Feel free to find more contact details or browse my other Repos.`, html) : "")
                     , html)
         }
         return "";
@@ -417,6 +419,14 @@ export default class ReadmeObject {
         (flag) ? this._contactGithub = true : this._contactGithub = false;
         return this._contactGithub;
     }
+    // contact github
+    set githubProfile(username) {
+        if (username.length > 0) {
+            this._githubProfile = username;
+            return true;
+        }
+        this._githubProfile = false;
+        }
     // Getters
     // This puts all the sections together to make a new readme
     get readme() {
