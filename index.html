@@ -64,7 +64,7 @@
                                             Installation Steps Required
                                         </label>
                                     </div>
-                                    <div class="form-floating">
+                                    <div class="form-floating"  id="installation-instructions-div">
                                         <textarea class="form-control" placeholder="Installation Instructions"
                                             id="installation-instructions" name="installation-instructions"></textarea>
                                         <label for="installation-instructions">Installation Instructions</label>
@@ -80,7 +80,7 @@
                                             Add screenshot"
                                         </label>
                                     </div>
-                                    <div class="form-floating">
+                                    <div class="form-floating" id="screenshot-link-div">
                                         <input type="text" class="form-control" placeholder="Screenshot URL" id="screenshot-link"
                                             name="screenshot-link">
                                         <label for="screenshot-link">Screenshot URL</label>
@@ -91,7 +91,7 @@
                                             Add a walkthrough video
                                         </label>
                                     </div>
-                                    <div class="form-floating">
+                                    <div class="form-floating" id="video-link-div">
                                         <input type="text" class="form-control" placeholder="Walkthrough Video URL" id="video-link"
                                             name="video-link">
                                         <label for="video-link">Walkthrough Video URL</label>
@@ -111,17 +111,17 @@
                                 </li>
                                 <!-- Contribute -->
                                 <li class="list-group-item">
-                                    <h3 class="card-subtitle">Contribute</h3>
+                                    <h3 class="card-subtitle">Contributing</h3>
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" value="true" id="contribute">
                                         <label class="form-check-label" for="contribute">
-                                            Contribute
+                                            Show Contributing Section
                                         </label>
                                     </div>
-                                    <div class="form-floating">
-                                        <textarea class="form-control" placeholder="Contribution Instructions"
+                                    <div class="form-floating" id="contribute-instructions-div">
+                                        <textarea class="form-control" placeholder="Contributing Instructions"
                                             id="contribute-instructions" name="contribute-instructions"></textarea>
-                                        <label for="contribute-instructions">Contribution Instructions</label>
+                                        <label for="contribute-instructions">Contributing Instructions</label>
                                     </div>
                                 </li>
                                 <!-- Tests -->
@@ -163,6 +163,12 @@
                                         <input class="form-check-input" type="checkbox" value="true" id="bootstrap">
                                         <label class="form-check-label" for="bootstrap">
                                             Bootstrap
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="true" id="font-awesome">
+                                        <label class="form-check-label" for="font-awesome">
+                                            Font Awesome
                                         </label>
                                     </div>
                                     <div class="form-check">
@@ -221,13 +227,13 @@
                                             Add Questions Section
                                         </label>
                                     </div>
-                                    <div class="form-check">
+                                    <div class="form-check" id="github-discussion-div">
                                         <input class="form-check-input" type="checkbox" value="true" id="github-discussion">
                                         <label class="form-check-label" for="github-discussion">
                                             Suggest raise discussion on Github Repo
                                         </label>
                                     </div>
-                                    <div class="form-floating">
+                                    <div class="form-floating" id="email-div">
                                         <input type="email" class="form-control" placeholder="Contact email" id="email"
                                             name="email">
                                         <label for="email">Contact Email</label>
@@ -249,10 +255,13 @@
                                 <h3>HTML Preview</h3>
                                 <div id="html-preview"></div>
                             </li>
-
                             <li class="list-group-item">
                                 <h3>Markdown Preview</h3>
                                 <p id="markdown"></p>
+                            </li>
+                            <li class="list-group-item">
+                                <h3>Download</h3>
+                                <button id="download-button" type="button">Download</button>
                             </li>
                         </ul>
                     </div>

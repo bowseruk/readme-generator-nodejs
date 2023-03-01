@@ -229,7 +229,7 @@ class ReadmeObject {
             this._contactEmail = email;
             return true;
         }
-        this._video = false;
+        this._contactEmai = false;
     }
     // contact github
     set contactGithub(flag) {
@@ -321,7 +321,7 @@ class ReadmeObject {
     // This makes the usage section
     get usage() {
         return "\n\n## Usage".concat(
-            (this._screenshot) ? `\n\nA screenshot of the project can be seen below:\n\n![Screenshot of ${this._title}](${this._screenshot} "Screenshot of ${this.title}")` : "",
+            (this._screenshot) ? `\n\nA screenshot of the project can be seen below:\n\n![Screenshot of ${this._title}](${this._screenshot})` : "",
             (this._video) ? `\n\nA walkthrough video of the project can be seen at [this link](${this._video})` : ""
         ) +
             `\n\n${this._usage}`;
@@ -447,7 +447,7 @@ class ReadmeObject {
     // This version is for HTML preview
     get questionsHTML() {
         if (this._questions && (this._contactEmail || this._contactGithub)) {
-            return `<h2 id="demo-questions">Questions<h2><p>Please contact me with any questions by:</p><ul>`.concat(
+            return `<h2 id="demo-questions">Questions</h2><p>Please contact me with any questions by:</p><ul>`.concat(
                 (this._contactEmail) ? `<li>Email: ${this._contactEmail}</li>` : "",
                 (this._contactGithub) ? `<li>Github Discussion - Add a discussion to this repo.</li>` : ""
             ) +
