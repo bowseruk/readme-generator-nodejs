@@ -341,6 +341,7 @@ export default class ReadmeObject {
     }
     // Set the license to use with the readme
     set license(license) {
+        if (typeof license === "string"){
         switch (license.toLowerCase()) {
 
             case ('apache 2.0'):
@@ -351,12 +352,12 @@ export default class ReadmeObject {
             case ('bsd 1-clause'):
                 this._badgeURL = "![License](https://img.shields.io/badge/License-BSD_1--Clause-brightgreen.svg)"
                 this._licenseURL = "https://opensource.org/license/bsd-1-clause/"
-                this._license = "BSD 3-Clause"
+                this._license = "BSD 1-Clause"
                 break;
             case ('bsd 2-clause'):
                 this._badgeURL = "![License](https://img.shields.io/badge/License-BSD_2--Clause-brightgreen.svg)"
                 this._licenseURL = "https://opensource.org/license/bsd-2-clause/"
-                this._license = "BSD 3-Clause"
+                this._license = "BSD 2-Clause"
                 break;
             case ('bsd 3-clause'):
                 this._badgeURL = "![License](https://img.shields.io/badge/License-BSD_3--Clause-brightgreen.svg)"
@@ -366,7 +367,7 @@ export default class ReadmeObject {
             case ('gnu gpl v1'):
                 this._badgeURL = "https://img.shields.io/badge/License-GPL_v1-brightgreen.svg"
                 this._licenseURL = "https://opensource.org/license/gpl-1-0/"
-                this._license = "GNU GPL v§"
+                this._license = "GNU GPL v1"
                 break;
             case ('gnu gpl v2'):
                 this._badgeURL = "https://img.shields.io/badge/License-GPL_v2-brightgreen.svg"
@@ -390,6 +391,11 @@ export default class ReadmeObject {
                 this._licenseURL = false;
                 this._license = false;
         }
+    } else {
+        this._badgeURL = false;
+        this._licenseURL = false;
+        this._license = false;
+    }
 
     }
     // show questions flag
