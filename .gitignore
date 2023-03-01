@@ -105,3 +105,6 @@ dist
 
 # DS Store for mac
 .DS_Store
+
+# Output of program
+output/*

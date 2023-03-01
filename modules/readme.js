@@ -87,7 +87,7 @@ export default class ReadmeObject {
         if (html) {
             return `<img src=${link} alt=${alt}>`
         }
-        return `\n\n[${alt}](${link})`
+        return `\n\n![${alt}](${link})`
     }
     makeLink(link, text, html = false) {
         if (html) {

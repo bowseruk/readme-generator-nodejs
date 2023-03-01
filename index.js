@@ -1,6 +1,5 @@
 // using newer syntax
 import fs from "fs";
-import path from 'path';
 import util from 'util';
 
 const writeFileAsync = util.promisify(fs.writeFile);
@@ -418,7 +417,7 @@ function questionsSection() {
 async function endOfChain() {
     // console.log(readmeInput);
     let readme = new ReadmeObject(readmeInput);
-    await writeToFile("output.md", readme.readme);
+    await writeToFile("output/readme.md", readme.readme);
 }
 
 // function to write README file
