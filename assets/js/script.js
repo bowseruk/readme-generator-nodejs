@@ -1,4 +1,4 @@
-
+import {ReadmeObject} from "../../modules.js"
 // This section is button functionality
 
 // template for adding with a button
