@@ -110,6 +110,7 @@ function hideQuestions() {
     let flag = readCheckbox("show-questions");
     showField("github-discussion-div", flag);
     showField("email-div", flag);
+    showField("github-profile-div", flag);
 }
 // Helper functions to read fields
 function readField(name) {
