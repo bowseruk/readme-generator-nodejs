@@ -1,21 +1,21 @@
 // This class makes the readme
-class ReadmeObject {
-    constructor(title, description, requirements, content, installation, installationInstruction, screenshot, screenshotURL, video, videoURL, usage, features, contribute, contributeInstruction, tests, credits, licenseFile, license, questions, githubDiscussion, email) {
+export default class ReadmeObject {
+    constructor(arg) {
         // set the properties using the setters below
-        this.title = title;
-        this.description = description;
-        this.descriptionList = requirements;
-        this.contents = content;
-        this.setInstallation(installation, installationInstruction);
-        this.setScreenshot(screenshot, screenshotURL);
-        this.setVideo(video, videoURL)
-        this.usage = usage;
-        this.features = features;
-        this.setContribute(contribute, contributeInstruction);
-        this.credits = credits;
-        this.tests = tests;
-        this.setLicense(licenseFile, license);
-        this.setQuestions(questions, githubDiscussion, email);
+        this.title = arg.title;
+        this.description = arg.description;
+        this.descriptionList = arg.requirements;
+        this.contents = arg.content;
+        this.setInstallation(arg.installation, arg.installationInstruction);
+        this.setScreenshot(arg.screenshot, arg.screenshotURL);
+        this.setVideo(arg.video, arg.videoURL)
+        this.usage = arg.usage;
+        this.features = arg.features;
+        this.setContribute(arg.contribute, arg.contributeInstruction);
+        this.credits = arg.credits;
+        this.tests = arg.tests;
+        this.setLicense(arg.licenseFile, arg.license);
+        this.setQuestions(arg.questions, arg.githubDiscussion, arg.email);
     };
     // helper functions
     checkLength(property) {
@@ -87,7 +87,7 @@ class ReadmeObject {
         if (html) {
             return `<img src=${link} alt=${alt}>`
         }
-        return `\n\n[${alt}](${link})`
+        return `\n\n![${alt}](${link})`
     }
     makeLink(link, text, html = false) {
         if (html) {
@@ -341,6 +341,7 @@ class ReadmeObject {
     }
     // Set the license to use with the readme
     set license(license) {
+        if (typeof license === "string"){
         switch (license.toLowerCase()) {
 
             case ('apache 2.0'):
@@ -351,12 +352,12 @@ class ReadmeObject {
             case ('bsd 1-clause'):
                 this._badgeURL = "![License](https://img.shields.io/badge/License-BSD_1--Clause-brightgreen.svg)"
                 this._licenseURL = "https://opensource.org/license/bsd-1-clause/"
-                this._license = "BSD 3-Clause"
+                this._license = "BSD 1-Clause"
                 break;
             case ('bsd 2-clause'):
                 this._badgeURL = "![License](https://img.shields.io/badge/License-BSD_2--Clause-brightgreen.svg)"
                 this._licenseURL = "https://opensource.org/license/bsd-2-clause/"
-                this._license = "BSD 3-Clause"
+                this._license = "BSD 2-Clause"
                 break;
             case ('bsd 3-clause'):
                 this._badgeURL = "![License](https://img.shields.io/badge/License-BSD_3--Clause-brightgreen.svg)"
@@ -366,7 +367,7 @@ class ReadmeObject {
             case ('gnu gpl v1'):
                 this._badgeURL = "https://img.shields.io/badge/License-GPL_v1-brightgreen.svg"
                 this._licenseURL = "https://opensource.org/license/gpl-1-0/"
-                this._license = "GNU GPL v§"
+                this._license = "GNU GPL v1"
                 break;
             case ('gnu gpl v2'):
                 this._badgeURL = "https://img.shields.io/badge/License-GPL_v2-brightgreen.svg"
@@ -390,6 +391,11 @@ class ReadmeObject {
                 this._licenseURL = false;
                 this._license = false;
         }
+    } else {
+        this._badgeURL = false;
+        this._licenseURL = false;
+        this._license = false;
+    }
 
     }
     // show questions flag
