@@ -133,10 +133,25 @@ function readInputs() {
     addCredit(jQueryValue, "The changes were checked with [W3C Validator](https://validator.w3.org/).");
     addCredit(inquirerValue, "The changes were checked with [W3C Validator](https://validator.w3.org/).");
     addCredit(nodeJSValue, "The changes were checked with [W3C Validator](https://validator.w3.org/).");
-    let licenseValue = readCheckbox("license");
-    return new ReadmeObject(titleValue, descriptionValue, requirementValue, contentValue, installationValue, installationInstructionValue, screenshotValue, screenshotURL, videoValue, videoURL, usageValue, featuresValue, contributeValue, contributeInstructionValue, testsValue, creditsValue, licenseValue);
+    let licenseFileValue = readCheckbox("license-file");
+    let licenseValue = readField("license");
+    let showContactValue = readCheckbox("show-questions");
+    let githubDiscussionValue = readCheckbox("github-discussion");
+    let emailValue = readField("email");
+    return new ReadmeObject(titleValue, descriptionValue, requirementValue, contentValue, installationValue, installationInstructionValue, screenshotValue, screenshotURL, videoValue, videoURL, usageValue, featuresValue, contributeValue, contributeInstructionValue, testsValue, creditsValue, licenseFileValue, licenseValue, showContactValue, githubDiscussionValue, emailValue);
 }
-
+// Download the file
+function download(content, mimeType, filename){
+    const a = document.createElement('a') // Create "a" element
+    const blob = new Blob([content], {type: mimeType}) // Create a blob (file-like object)
+    const url = URL.createObjectURL(blob) // Create an object URL from blob
+    a.setAttribute('href', url) // Set "a" element link
+    a.setAttribute('download', filename) // Set download filename
+    a.click() // Start downloading
+  }
+// Look for changes to the form
 $('form').change(function(){
-    $('#markdown').html(readInputs().readme.split('\n').join("<br>"))
+    let readme = readInputs();
+    $('#markdown').html(readme.readme.split('\n').join("<br>"))
+    $('#html-preview').html(readme.readmeHTML)
 });

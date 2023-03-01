@@ -83,7 +83,7 @@
                                     <div class="form-floating">
                                         <input type="text" class="form-control" placeholder="Screenshot URL" id="screenshot-link"
                                             name="screenshot-link">
-                                        <label for="usage">Screenshot URL</label>
+                                        <label for="screenshot-link">Screenshot URL</label>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" value="true" id="include-video">
@@ -94,7 +94,7 @@
                                     <div class="form-floating">
                                         <input type="text" class="form-control" placeholder="Walkthrough Video URL" id="video-link"
                                             name="video-link">
-                                        <label for="usage">Walkthrough Video URL</label>
+                                        <label for="video-link">Walkthrough Video URL</label>
                                     </div>
                                     <div class="form-floating">
                                         <textarea class="form-control" placeholder="Project Usage" id="usage"
@@ -191,20 +191,47 @@
                                 <li class="list-group-item">
                                     <h3 class="card-subtitle">License</h3>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="true" id="license">
-                                        <label class="form-check-label" for="license">
+                                        <input class="form-check-input" type="checkbox" value="true" id="license-file">
+                                        <label class="form-check-label" for="license-file">
                                             The project has a license file
                                         </label>
                                     </div>
                                     <div class="form-floating">
-                                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
-                                          <option selected>Open this select menu</option>
-                                          <option value="1">One</option>
-                                          <option value="2">Two</option>
-                                          <option value="3">Three</option>
+                                        <select class="form-select" id="license" aria-label="License Select">
+                                          <option selected>Select a license</option>
+                                          <option value="None">No License</option>
+                                          <option value="apache 2.0">Apache 2.0</option>
+                                          <option value="bsd 1-clause">BSD 1-Clause</option>
+                                          <option value="bsd 2-clause">BSD 2-Clause</option>
+                                          <option value="bsd 3-clause">BSD 3-Clause</option>
+                                          <option value="gnu gpl v1">GNU GPL v1</option>
+                                          <option value="gnu gpl v2">GNU GPL v2</option>
+                                          <option value="gnu gpl v3">GNU GPL v3</option>
+                                          <option value="mit">MIT</option>
                                         </select>
-                                        <label for="floatingSelect">Works with selects</label>
+                                        <label for="license">Please Select A license</label>
                                       </div>
+                                </li>
+                                <!-- Questions -->
+                                <li class="list-group-item">
+                                    <h3 class="card-subtitle">Questions</h3>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="true" id="show-questions">
+                                        <label class="form-check-label" for="show-questions">
+                                            Add Questions Section
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="true" id="github-discussion">
+                                        <label class="form-check-label" for="github-discussion">
+                                            Suggest raise discussion on Github Repo
+                                        </label>
+                                    </div>
+                                    <div class="form-floating">
+                                        <input type="email" class="form-control" placeholder="Contact email" id="email"
+                                            name="email">
+                                        <label for="email">Contact Email</label>
+                                    </div>
                                 </li>
                             </ul>
                         </form>
@@ -219,6 +246,12 @@
                                 <h2 class="card-title">Preview</h2>
                             </li>
                             <li class="list-group-item">
+                                <h3>HTML Preview</h3>
+                                <div id="html-preview"></div>
+                            </li>
+
+                            <li class="list-group-item">
+                                <h3>Markdown Preview</h3>
                                 <p id="markdown"></p>
                             </li>
                         </ul>
