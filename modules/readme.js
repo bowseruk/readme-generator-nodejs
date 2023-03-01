@@ -1,21 +1,21 @@
 // This class makes the readme
 export default class ReadmeObject {
-    constructor(title, description, requirements, content, installation, installationInstruction, screenshot, screenshotURL, video, videoURL, usage, features, contribute, contributeInstruction, tests, credits, licenseFile, license, questions, githubDiscussion, email) {
+    constructor(arg) {
         // set the properties using the setters below
-        this.title = title;
-        this.description = description;
-        this.descriptionList = requirements;
-        this.contents = content;
-        this.setInstallation(installation, installationInstruction);
-        this.setScreenshot(screenshot, screenshotURL);
-        this.setVideo(video, videoURL)
-        this.usage = usage;
-        this.features = features;
-        this.setContribute(contribute, contributeInstruction);
-        this.credits = credits;
-        this.tests = tests;
-        this.setLicense(licenseFile, license);
-        this.setQuestions(questions, githubDiscussion, email);
+        this.title = arg.title;
+        this.description = arg.description;
+        this.descriptionList = arg.requirements;
+        this.contents = arg.content;
+        this.setInstallation(arg.installation, arg.installationInstruction);
+        this.setScreenshot(arg.screenshot, arg.screenshotURL);
+        this.setVideo(arg.video, arg.videoURL)
+        this.usage = arg.usage;
+        this.features = arg.features;
+        this.setContribute(arg.contribute, arg.contributeInstruction);
+        this.credits = arg.credits;
+        this.tests = arg.tests;
+        this.setLicense(arg.licenseFile, arg.license);
+        this.setQuestions(arg.questions, arg.githubDiscussion, arg.email);
     };
     // helper functions
     checkLength(property) {

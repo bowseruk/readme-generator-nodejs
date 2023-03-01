@@ -127,52 +127,54 @@ function readDynamicField(name, counter) {
 
 // This section gets input values
 function readInputs() {
-    let titleValue = readField("title");
-    let descriptionValue = readField("description");
-    let requirementValue = readDynamicField("Requirement", requirements);
-    let contentValue = readCheckbox("contents");
-    let installationValue = readCheckbox("installation");
-    let installationInstructionValue = readField("installation-instructions");
-    let screenshotValue = readCheckbox("include-screenshot");
-    let screenshotURL = readField("screenshot-link");
-    let videoValue = readCheckbox("include-video");
-    let videoURL = readField("video-link"); 
-    let usageValue = readField("usage");
-    let featuresValue = readDynamicField("Feature", features);
-    let contributeValue = readCheckbox("contribute");
-    let contributeInstructionValue = readField("contribute-instructions");
-    let testsValue = readDynamicField("Test", tests);
-    let w3validatorValue = readCheckbox("w3validator");
-    let w3schoolValue = readCheckbox("w3school");
-    let mdnValue = readCheckbox("mdn");
-    let stackOverflowValue = readCheckbox("stack-overflow");
-    let bootstrapValue = readCheckbox("bootstrap");
-    let fontAwesomeValue = readCheckbox("font-awesome");
-    let jQueryValue = readCheckbox("j-query");
-    let inquirerValue = readCheckbox("inquirer");
-    let nodeJSValue = readCheckbox("node-js");
-    let creditsValue = readDynamicField("Credit", credits);
-    const addCredit = (bool, text) => {
-        if (bool) {
+    let input = {}
+    // Description
+    input.title = readField("title");
+    input.description = readField("description");
+    input.requirements = readDynamicField("Requirement", requirements);
+    // Contents
+    input.content = readCheckbox("contents");
+    // Installation
+    input.installation = readCheckbox("installation");
+    input.installationInstruction = readField("installation-instructions");
+    // Usage
+    input.screenshot = readCheckbox("include-screenshot");
+    input.screenshotURL = readField("screenshot-link");
+    input.video = readCheckbox("include-video");
+    input.videoURL = readField("video-link"); 
+    input.usage = readField("usage");
+    // Features
+    input.features = readDynamicField("Feature", features);
+    // Contribute
+    input.contribute = readCheckbox("contribute");
+    input.contributeInstruction = readField("contribute-instructions");
+    // Credits
+    input.credits = readDynamicField("Credit", credits);
+    const addCredit = (id, text) => {
+        if (readCheckbox(id)) {
             creditsValue.push(text)
         }
     }
-    addCredit(w3validatorValue, "The changes were checked with [W3C Validator](https://validator.w3.org/).");
-    addCredit(w3schoolValue, "[W3School](https://www.w3schools.com/) was used as a reference for elements to use and good practice.");
-    addCredit(mdnValue, "[MDN](https://developer.mozilla.org/en-US/) is a very comprehensive and useful resource.");
-    addCredit(stackOverflowValue, "[Stack Overflow](https://stackoverflow.com/) always seems to have the answer to a problem that occurs.");
-    addCredit(bootstrapValue, "[Bootstrap](https://getbootstrap.com/) was used in this project using the documentation on their website.");
-    addCredit(fontAwesomeValue, "[Font Awesome](https://fontawesome.com/) was used and the documentation referenced.");
-    addCredit(jQueryValue, "[JQuery](https://jquery.com/) documentation was referred to throughout the project.");
-    addCredit(inquirerValue, "The [Inquirer](https://www.npmjs.com/package/inquirer) package was used with node.js, following the documentation.");
-    addCredit(nodeJSValue, "[Node.js](https://nodejs.org/) was used in the project, following documentation from their site.");
-    let licenseFileValue = readCheckbox("license-file");
-    let licenseValue = readField("license");
-    let showContactValue = readCheckbox("show-questions");
-    let githubDiscussionValue = readCheckbox("github-discussion");
-    let emailValue = readField("email");
+    addCredit("w3validator", "The changes were checked with [W3C Validator](https://validator.w3.org/).");
+    addCredit("w3school", "[W3School](https://www.w3schools.com/) was used as a reference for elements to use and good practice.");
+    addCredit("mdn", "[MDN](https://developer.mozilla.org/en-US/) is a very comprehensive and useful resource.");
+    addCredit("stack-overflow", "[Stack Overflow](https://stackoverflow.com/) always seems to have the answer to a problem that occurs.");
+    addCredit("bootstrap", "[Bootstrap](https://getbootstrap.com/) was used in this project using the documentation on their website.");
+    addCredit("font-awesome", "[Font Awesome](https://fontawesome.com/) was used and the documentation referenced.");
+    addCredit("j-query", "[JQuery](https://jquery.com/) documentation was referred to throughout the project.");
+    addCredit("inquirer", "The [Inquirer](https://www.npmjs.com/package/inquirer) package was used with node.js, following the documentation.");
+    addCredit("Credit", "[Node.js](https://nodejs.org/) was used in the project, following documentation from their site.");
+    // Tests
+    input.tests = readDynamicField("Test", tests);
+    // License
+    input.licenseFile = readCheckbox("license-file");
+    input.license = readField("license");
+    // Questions
+    input.questions = readCheckbox("show-questions");
+    input.githubDiscussion = readCheckbox("github-discussion");
+    input.email = readField("email");
     // Turn the content into a readme object
-    return new ReadmeObject(titleValue, descriptionValue, requirementValue, contentValue, installationValue, installationInstructionValue, screenshotValue, screenshotURL, videoValue, videoURL, usageValue, featuresValue, contributeValue, contributeInstructionValue, testsValue, creditsValue, licenseFileValue, licenseValue, showContactValue, githubDiscussionValue, emailValue);
+    return new ReadmeObject(input);
 }
 // Download the file - based on stack overflow post
 function download(content, mimeType, filename){
