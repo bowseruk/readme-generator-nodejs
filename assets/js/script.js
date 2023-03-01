@@ -152,7 +152,7 @@ function readInputs() {
     input.credits = readDynamicField("Credit", credits);
     const addCredit = (id, text) => {
         if (readCheckbox(id)) {
-            creditsValue.push(text)
+            input.credits.push(text)
         }
     }
     addCredit("w3validator", "The changes were checked with [W3C Validator](https://validator.w3.org/).");
