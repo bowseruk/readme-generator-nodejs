@@ -7,6 +7,7 @@ function addSection(name, counter) {
     $(`#${name.toLowerCase()}-display`).append($('<div>').addClass("form-floating").append($('<input>').addClass("form-control").attr({ placeholder: `${name}`, id: `${name.toLowerCase()}-` + counter, name: `${name.toLowerCase()}-` + counter }), $('<label>').attr({ for: `${name.toLowerCase()}-` + counter }).text(`${name}`)))
     return counter;
 }
+// template for removing with a button
 function removeSection(name, counter) {
     if (counter <= 0) {
         return 0;
@@ -25,10 +26,11 @@ function addRequirement() {
 }
 // Remove Requirement
 function removeRequirement() {
-        // Remove a feature 
-        requirements = removeSection("Requirement", requirements);
-        return true
+    // Remove a feature 
+    requirements = removeSection("Requirement", requirements);
+    return true
 }
+// Event listeners
 $('#add-requirement').on("click", addRequirement);
 $('#remove-requirement').on("click", removeRequirement);
 // Create a list of Features
@@ -45,6 +47,7 @@ function removeFeature() {
     features = removeSection("Feature", features);
     return true;
 }
+// Event listeners
 $('#add-feature').on("click", addFeature);
 $('#remove-feature').on("click", removeFeature);
 // Create a list of Tests
@@ -59,6 +62,7 @@ function removeTest() {
     tests = removeSection("Test", tests);
     return true;
 }
+// Event listeners
 $('#add-test').on("click", addTest);
 $('#remove-test').on("click", removeTest);
 // Create a list of Features
@@ -73,12 +77,13 @@ function removeCredit() {
     credits = removeSection("Credit", credits);
     return true;
 }
+// Event listeners
 $('#add-credit').on("click", addCredit);
 $('#remove-credit').on("click", removeCredit);
 
 // This section is reacting to checking a button
 function showField(name, flag) {
-    if (! flag) {
+    if (!flag) {
         $(`#${name}`).hide().val("");
         return false;
     }
@@ -106,17 +111,13 @@ function hideQuestions() {
     showField("github-discussion-div", flag);
     showField("email-div", flag);
 }
-
-
-
+// Helper functions to read fields
 function readField(name) {
     return $(`#${name.toLowerCase()}`).val();
 }
-
 function readCheckbox(name) {
     return $(`#${name}`).is(":checked")
 }
-
 function readDynamicField(name, counter) {
     let values = []
     for (let i = 1; i < counter + 1; i++) {
@@ -124,7 +125,6 @@ function readDynamicField(name, counter) {
     }
     return values;
 }
-
 // This section gets input values
 function readInputs() {
     let input = {}
@@ -141,7 +141,7 @@ function readInputs() {
     input.screenshot = readCheckbox("include-screenshot");
     input.screenshotURL = readField("screenshot-link");
     input.video = readCheckbox("include-video");
-    input.videoURL = readField("video-link"); 
+    input.videoURL = readField("video-link");
     input.usage = readField("usage");
     // Features
     input.features = readDynamicField("Feature", features);
@@ -177,16 +177,16 @@ function readInputs() {
     return new ReadmeObject(input);
 }
 // Download the file - based on stack overflow post
-function download(content, mimeType, filename){
+function download(content, mimeType, filename) {
     const a = document.createElement('a') // Create "a" element
-    const blob = new Blob([content], {type: mimeType}) // Create a blob (file-like object)
+    const blob = new Blob([content], { type: mimeType }) // Create a blob (file-like object)
     const url = URL.createObjectURL(blob) // Create an object URL from blob
     a.setAttribute('href', url) // Set "a" element link
     a.setAttribute('download', filename) // Set download filename
     a.click() // Start downloading
-  }
+}
 // Look for changes to the form
-$('form').change(function(){
+$('form').change(function () {
     init();
     let readme = readInputs();
     $('#markdown').html(readme.readme.split('\n').join("<br>"))
@@ -196,7 +196,7 @@ $('form').change(function(){
         download(readme.readme, "text/markdown", "readme.md");
     })
 });
-
+// Startup function
 function init() {
     hideInstallation()
     hideScreenshot()
