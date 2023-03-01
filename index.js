@@ -314,16 +314,16 @@ function creditsSections() {
             readmeInput.credits.push("[Bootstrap](https://getbootstrap.com/) was used in this project using the documentation on their website.")
         }
         if (answers.fontAwesome) {
-            readmeInput.credits.push("font-awesome", "[Font Awesome](https://fontawesome.com/) was used and the documentation referenced.")
+            readmeInput.credits.push("[Font Awesome](https://fontawesome.com/) was used and the documentation referenced.")
         }
         if (answers.jQuery) {
-            readmeInput.credits.push("j-query", "[JQuery](https://jquery.com/) documentation was referred to throughout the project.")
+            readmeInput.credits.push("[JQuery](https://jquery.com/) documentation was referred to throughout the project.")
         }
         if (answers.inquirer) {
-            readmeInput.credits.push("inquirer", "The [Inquirer](https://www.npmjs.com/package/inquirer) package was used with node.js, following the documentation.")
+            readmeInput.credits.push("The [Inquirer](https://www.npmjs.com/package/inquirer) package was used with node.js, following the documentation.")
         }
         if (answers.nodejs) {
-            readmeInput.credits.push("Credit", "[Node.js](https://nodejs.org/) was used in the project, following documentation from their site.")
+            readmeInput.credits.push("[Node.js](https://nodejs.org/) was used in the project, following documentation from their site.")
         }
         customCredits();
     })

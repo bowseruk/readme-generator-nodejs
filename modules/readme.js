@@ -211,8 +211,8 @@ export default class ReadmeObject {
                 this.makeList(
                     "".concat(
                         (this._contactEmail) ? this.makeListObject(`Email: ${this._contactEmail}`, html) : "",
-                        (this._contactGithub) ? this.makeListObject(`Github Discussion - Add a discussion to this repo.`, html) : "",
-                        (this._githubProfile) ? this.makeListObject(`My Github Username is ${this.makeLink(`https://github.com/${this._githubProfile.toLowerCase()}`, this._githubProfile, html)}. Feel free to find more contact details or browse my other Repos.`, html) : "")
+                        (this._contactGithub) ? this.makeListObject(`Github Discussion: Add a discussion to this repo.`, html) : "",
+                        (this._githubProfile) ? this.makeListObject(`My Github Username is ${this.makeLink(`https://github.com/${this._githubProfile.toLowerCase()}`, this._githubProfile, html)}: Feel free to find more contact details or browse my other Repos.`, html) : "")
                     , html)
         }
         return "";
