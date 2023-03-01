@@ -102,6 +102,10 @@ function readInputs() {
     let contentValue = readCheckbox("contents");
     let installationValue = readCheckbox("installation");
     let installationInstructionValue = readField("installation-instructions");
+    let screenshotValue = readCheckbox("include-screenshot");
+    let screenshotURL = readField("screenshot-link");
+    let videoValue = readCheckbox("include-video");
+    let videoURL = readField("video-link"); 
     let usageValue = readField("usage");
     let featuresValue = readDynamicField("Feature", features);
     let contributeValue = readCheckbox("contribute");
@@ -130,8 +134,7 @@ function readInputs() {
     addCredit(inquirerValue, "The changes were checked with [W3C Validator](https://validator.w3.org/).");
     addCredit(nodeJSValue, "The changes were checked with [W3C Validator](https://validator.w3.org/).");
     let licenseValue = readCheckbox("license");
-
-    return new ReadmeObject(titleValue, descriptionValue, requirementValue, contentValue, installationValue, installationInstructionValue, usageValue, featuresValue, contributeValue, contributeInstructionValue, testsValue, creditsValue, licenseValue);
+    return new ReadmeObject(titleValue, descriptionValue, requirementValue, contentValue, installationValue, installationInstructionValue, screenshotValue, screenshotURL, videoValue, videoURL, usageValue, featuresValue, contributeValue, contributeInstructionValue, testsValue, creditsValue, licenseValue);
 }
 
 $('form').change(function(){
