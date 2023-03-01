@@ -86,23 +86,23 @@ function showField(name, flag) {
     return true;
 }
 function hideInstallation() {
-    flag = readCheckbox("installation");
+    let flag = readCheckbox("installation");
     showField("installation-instructions-div", flag);
 }
 function hideScreenshot() {
-    flag = readCheckbox("include-screenshot");
+    let flag = readCheckbox("include-screenshot");
     showField("screenshot-link-div", flag);
 }
 function hideVideo() {
-    flag = readCheckbox("include-video");
+    let flag = readCheckbox("include-video");
     showField("video-link-div", flag);
 }
 function hideContribution() {
-    flag = readCheckbox("contribute");
+    let flag = readCheckbox("contribute");
     showField("contribute-instructions-div", flag);
 }
 function hideQuestions() {
-    flag = readCheckbox("show-questions");
+    let flag = readCheckbox("show-questions");
     showField("github-discussion-div", flag);
     showField("email-div", flag);
 }
