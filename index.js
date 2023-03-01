@@ -80,7 +80,8 @@ const licenseQuestions = [
 // These are the questions for the contents section of the readme
 const questionsQuestions = [
     new Question("confirm", "gitHub", "Ask users to leave a message on github discussion on the repo?"),
-    new Question("input", "email", "Type a contact email, or type none to skip:")
+    new Question("input", "email", "Type a contact email, or type none to skip:"),
+    new Question("input", "githubProfle", "Type a Github Username, or type none to skip:")
 ]
 
 function descriptionSection() {
@@ -402,6 +403,11 @@ function questionsSection() {
             readmeInput.questions = false;
         } else {
             readmeInput.questions = true;
+        }
+        if (answers.githubProfle.toLowerCase() === "none") {
+            readmeInput.githubProfle = false;
+        } else {
+            readmeInput.githubProfle = answers.githubProfle;
         }
         endOfChain()
     })
