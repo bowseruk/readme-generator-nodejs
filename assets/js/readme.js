@@ -23,22 +23,22 @@ class ReadmeObject {
     }
     // Uses both setters in the correct order for installation property
     setInstallation(flag, installationInstruction) {
-        this.showInstallation(flag);
-        return this.installation(installationInstruction);
+        this.showInstallation = flag;
+        return this.installation = installationInstruction;
     }    
     // Uses both setters in the correct order for screenshot property
     setScreenshot(flag, screenshotURL) {
-        this.showScreenshot(flag);
-        return this.screenshot(screenshotURL);
+        this.showScreenshot = flag;
+        return this.screenshot = screenshotURL;
     }
     // Uses both setters in the correct order for video property
     setVideo(flag, videoURL) {
-        this.showVideo(flag);
-        return this.video(videoURL);
+        this.showVideo = flag;
+        return this.video = videoURL;
     }
     setContribute(flag, contributeInstruction) {
-        this.showContribute(flag);
-        return this.contribute(contributeInstruction);
+        this.showContribute = flag;
+        return this.contribute = contributeInstruction;
     }
     // Setters
     // set the title of the Readme
@@ -149,7 +149,7 @@ class ReadmeObject {
     }
     set license(license) {
         switch (license) {
-            case (mit):
+            case ("mit"):
                 this._badgeURL = "mit"
                 this._license = "mit"
                 break;
