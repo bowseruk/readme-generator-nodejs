@@ -52,6 +52,181 @@ class ReadmeObject {
         this.contactEmail = email;
         this.contactGithub = github;
     }
+    // To construct the page
+    makeTitle(text, html = false) {
+        if (html) {
+            return `<h1 id="demo-${text.toLowerCase().replaceAll(" ", "-")}">${text}</h1>`
+        }
+        return `# ${text}`
+    }
+    makeHeader(text, html = false) {
+        if (html) {
+            return `<h2 id="demo-${text.toLowerCase().replaceAll(" ", "-")}">${text}</h2>`
+        }
+        return `\n\n## ${text}`
+    }
+    makeLine(text, html = false) {
+        if (html) {
+            return `<p>${text}</p>`
+        }
+        return `\n\n${text}`
+    }
+    makeList(text, html = false) {
+        if (html) {
+            return `<ul>${text}</ul>`
+        }
+        return `${text}`
+    }
+    makeListObject(text, html = false) {
+        if (html) {
+            return `<li>${text}</li>`
+        }
+        return `\n\n- ${text}`
+    }
+    makeImg(link, alt, html = false) {
+        if (html) {
+            return `<img src=${link} alt=${alt}>`
+        }
+        return `\n\n[${alt}](${link})`
+    }
+    makeLink(link, text, html = false) {
+        if (html) {
+            return `<a href="${link}">${text}</a>`
+        }
+        return `[${text}](${link})`
+    }
+    makeContentsItem(title, html) {
+        return this.makeListObject(this.makeLink((html) ? `#demo-${title.toLowerCase().replaceAll(" ", "-")}` : `#${title.toLowerCase().replaceAll(" ", "-")}`, title, html), html);
+    }
+    // Render Functions
+    renderDescriptionList(html) {
+        if (this._descriptionList) {
+            return this.makeLine("The project had the following requirements:", html) +
+                this.makeList(this._descriptionList.map(key => this.makeListObject(key, html)).join(""),
+                    html);
+        }
+        return "";
+    }
+    renderDiscription(html) {
+        return this.makeTitle(this._title, html) +
+            this.makeHeader("Description", html) +
+            this.makeLine(this._description, html) +
+            this.renderDescriptionList(html);
+    }
+    // This is the backend function for html and markdown
+    renderContents(html) {
+        if (this._contents) {
+            return this.makeHeader("Table of Contents", html) +
+                this.makeList(
+                    this.makeContentsItem("Description", html) +
+                    this.makeContentsItem("Table of Contents", html) +
+                    this.makeContentsItem("Installation", html) +
+                    this.makeContentsItem("Usage", html).concat(
+                        (this._features) ? this.makeContentsItem("Features", html) : "",
+                        (this._contribute) ? this.makeContentsItem("Contributing", html) : "",
+                        (this._tests) ? this.makeContentsItem("Tests", html) : "") +
+                    this.makeContentsItem("Credits", html).concat(
+                        (this._license) ? this.makeContentsItem("License", html) : "",
+                        (this._questions) ? this.makeContentsItem("Questions", html) : ""
+                    )
+                    , html)
+        }
+        return "";
+    }
+    renderInstallation(html) {
+        if (this._installation) {
+            return this.makeHeader("Installation", html) +
+                this.makeLine(this._installation, html);
+        }
+        return this.makeHeader("Installation", html) +
+            this.makeLine("The project does not require installation steps.", html);
+    }
+    // This is the backend function for html and markdown
+    renderUsage(html) {
+        return this.makeHeader("Usage", html).concat(
+            (this._screenshot) ? this.makeLine(`A screenshot of the project can be seen below:`, html) +
+                this.makeImg(this._screenshot, `Screenshot`, html) : "",
+            (this._video) ? this.makeLine(`A walkthrough video of the project can be seen at ${this.makeLink(this._video, "this link", html)}`, html) : ""
+        ) +
+            this.makeLine(this._usage, html);
+    }
+    // This is the backend function for html and markdown
+    renderFeatures(html) {
+        if (this._features) {
+            return this.makeHeader("Features", html) +
+                this.makeLine("This project has the following features:", html) +
+                this.makeList(
+                    this._features.map(key => this.makeListObject(key, html)).join(""),
+                    html
+                )
+        }
+        return "";
+    }
+    // This is the backend function for html and markdown
+    renderContribute(html) {
+        if (this._contribute) {
+            return this.makeHeader('Contributing', html) +
+                this.makeLine(this._contribute, html);
+        }
+        return "";
+    }
+    // This is the backend function for html and markdown
+    renderTests(html) {
+        if (this._tests) {
+            return this.makeHeader("Tests", html) +
+                this.makeLine("The project has the following tests:", html) +
+                this.makeList(
+                    this._tests.map(key => this.makeListObject(key, html)).join(""), html
+                )
+        }
+        return this.makeHeader("Tests", html) +
+            this.makeLine("There are currently no tests for this project.", html)
+    }
+    // This is the backend function for html and markdown
+    renderCredits(html) {
+        return this.makeHeader("Credits", html) +
+            this.makeLine("The following resources where important for this project.", html) +
+            this.makeList(
+                this.makeListObject(`${this.makeLink("https://github.com/bowseruk/readme-generator-nodejs", "Readme Generator", html)} for generating the readme.`, html).concat(
+                    (this._credits) ? this._credits.map(key => this.makeListObject(key, html)).join("") : "")
+                , html);
+    }
+    // This is the backend function for html and markdown
+    renderLicense(html) {
+        if ((!this._licenseFile) && (!this._license)) {
+            return "";
+        }
+        return this.makeHeader(`License`, html).concat(
+            (this._badgeURL) ? this.makeImg(this._badgeURL, this._license, html) : "",
+            (this._license) ? this.makeLine(`This project is licensed under ${this.makeLink(this._licenseURL, this._license, html)}`, html) : "",
+            (this._licenseFile) ? this.makeLine(`This full license used by the project is in the LICENSE file of the repo.`, html) : ""
+        );
+    }
+    // This function does the work for the getters - more maintainable, as html and markdown come from same function.
+    renderQuestion(html) {
+        if (this._questions && (this._contactEmail || this._contactGithub)) {
+            return this.makeHeader("Questions", html) +
+                this.makeLine("Please contact me with any questions by:") +
+                this.makeList(
+                    "".concat(
+                        (this._contactEmail) ? this.makeListObject(`Email: ${this._contactEmail}`, html) : "",
+                        (this._contactGithub) ? this.makeListObject(`Github Discussion - Add a discussion to this repo.`, html) : "")
+                    , html)
+        }
+        return "";
+    }
+    renderReadme(html) {
+        return this.renderDiscription(html) +
+        this.renderContents(html) +
+        this.renderInstallation(html) +
+        this.renderUsage(html) +
+        this.renderFeatures(html) +
+        this.renderContribute(html) +
+        this.renderTests(html) +
+        this.renderCredits(html) +
+        this.renderLicense(html) +
+        this.renderQuestion(html)
+    }
     // Setters
     // set the title of the Readme
     set title(title) {
@@ -236,248 +411,12 @@ class ReadmeObject {
         (flag) ? this._contactGithub = true : this._contactGithub = false;
         return this._contactGithub;
     }
-    // Getters in order they appear of the readme
-    // This returns a formated list of requirements for the description
-    get descriptionList() {
-        if (this._descriptionList) {
-            return "\n\nThe project had the following requirements:" +
-                this._descriptionList.map(key => `\n\n- ${key}`).join("");
-        }
-        return "";
-    };
-    // This version is for HTML preview
-    get descriptionListHTML() {
-        if (this._descriptionList) {
-            return `<p>The project had the following requirements:</p>
-        <ul>` +
-                this._descriptionList.map(key => `<li>${key}</li>`).join("") +
-                `</ul>`;
-        }
-        return "";
-    }
-    // This makes the first section with the title and description. And a list of requirements if it has been added.
-    get descriptionSection() {
-        return `# ${this._title}\n\n## Description\n\n${this._description}${this.descriptionList}`;
-    }
-    // This version is for HTML preview
-    get descriptionSectionHTML() {
-        return `<h1>${this._title}</h1>
-        <h2 id="demo-description"> Description</h2>
-        <p>${this._description}</p>
-        ${this.descriptionListHTML}`;
-    }
-    // This makes the contents section
-    get contents() {
-        if (this._contents) {
-            return "\n\n## Table of Contents" +
-                "\n\n- [Description](#description)" +
-                "\n\n- [Table of Contents](#table-of-contents)" +
-                "\n\n- [Installation](#installation)" +
-                "\n\n- [Usage](#usage)".concat(
-                    (this._features) ? "\n\n- [Features](#features)" : "",
-                    (this._contribute) ? "\n\n- [Contributing](#contributing)" : "",
-                    (this._tests) ? "\n\n- [Tests](#tests)" : "") +
-                "\n\n- [Credits](#credits)".concat(
-                    (this._license) ? "\n\n- [License](#license)" : "",
-                    (this._questions) ? "\n\n- [Questions](#questions)" : "");
-        }
-        return "";
-    }
-    // This version is for HTML preview
-    get contentsHTML() {
-        if (this._contents) {
-            return `<h2 id="demo-table-of-contents">Table of Contents</h2>` +
-                `<ul>
-                <li><a href="#demo-description">Description</a></li>
-                <li><a href="#demo-table-of-contents">Table of Contents</a></li>
-                <li><a href="#demo-installation">Installation</a></li>
-                <li><a href="#demo-usage">Usage</a></li>`.concat(
-                    (this._features) ? '<li><a href="#demo-features">Features</a></li>' : "",
-                    (this._contribute) ? '<li><a href="#demo-contributing">Contributing</a></li>' : "",
-                    (this._tests) ? '<li><a href="#demo-tests">Tests</a></li>' : "") +
-                '<li><a href="#demo-credits">Credits</a></li>'.concat(
-                    (this._license) ? '<li><a href="#demo-license">License</a></li>' : "",
-                    (this._questions) ? '<li><a href="#demo-questions">Questions</a></li>' : "") +
-                `</ul>`;
-        }
-        return "";
-    }
-    // This makes the installation section
-    get installation() {
-        if (this._installation) {
-            return `\n\n## Installation\n\n${this._installation}`
-        }
-        return "\n\n## Installation\n\nThe project does not require installation steps.";
-    }
-    // This version is for HTML preview
-    get installationHTML() {
-        if (this._installation) {
-            return `<h2 id="demo-installation">Installation</h2>
-            <p>${this._installation}</p>`
-        }
-        return `<h2 id="demo-installation">Installation</h2>
-        <p>The project does not require installation steps.</p>`;
-    }
-    // This makes the usage section
-    get usage() {
-        return "\n\n## Usage".concat(
-            (this._screenshot) ? `\n\nA screenshot of the project can be seen below:\n\n![Screenshot of ${this._title}](${this._screenshot})` : "",
-            (this._video) ? `\n\nA walkthrough video of the project can be seen at [this link](${this._video})` : ""
-        ) +
-            `\n\n${this._usage}`;
-    }
-    // This version is for HTML preview
-    get usageHTML() {
-        return `<h2 id="demo-usage">Usage</h2>`.concat(
-            (this._screenshot) ? `<p>A screenshot of the project can be seen below:</p><img alt="Screenshot of ${this._title}" href="${this._screenshot}">` : "",
-            (this._video) ? `<p>A walkthrough video of the project can be seen at <a href="${this._video}">this link</a></p>` : ""
-        ) +
-            `<p>${this._usage}</p>`;
-    }
-    // This makes the features section
-    get features() {
-        if (this._features) {
-            return "\n\n## Features\n\nThis project has the following features:" +
-                this._features.map(key => `\n\n- ${key}`).join("");
-        }
-        return "";
-    }
-    // This version is for HTML preview
-    get featuresHTML() {
-        if (this._features) {
-            return `<h2 id="demo-features">Features</h2>
-                <p>This project has the following features:</p>
-                <ul>` +
-                this._features.map(key => `<li>${key}</li>`).join("") +
-                `</ul>`;
-        }
-        return "";
-    }
-    // This makes the contribute section
-    get contribute() {
-        if (this._contribute) {
-            return `\n\n## Contributing` +
-                `\n\n${this._contribute}`;
-        }
-        return "";
-    }
-    // This version is for HTML preview
-    get contributeHTML() {
-        if (this._contribute) {
-            return `<h2 id="demo-contributing">Contributing</h2>` +
-                `<p>${this._contribute}</p>`;
-        }
-        return "";
-    }
-    // This makes the test section
-    get tests() {
-        if (this._tests) {
-            return `\n\n## Tests\n\nThe project has the following tests:` +
-                this._tests.map(key => `\n\n- ${key}`).join("");;
-        }
-        return "\n\n## Tests\n\nThere are currently no tests for this project.";
-    }
-    // This version is for HTML preview
-    get testsHTML() {
-        if (this._tests) {
-            return `<h2 id="demo-tests">Tests</h2>
-            <p>The project has the following tests:</p><ul>` +
-                this._tests.map(key => `<li>${key}</li>`).join("") +
-                `</ul>`;
-        }
-        return `<h2 id="demo-tests">Tests</h2><p>There are currently no tests for this project.</p>`;
-    }
-    // This makes the credits section
-    get credits() {
-        if (this._credits) {
-            return "\n\n## Credits" +
-                "\n\nThe following resources where important for this project." +
-                "\n\n- [Readme Generator](https://github.com/bowseruk/readme-generator-nodejs) for generating the readme." +
-                this._credits.map(key => `\n\n- ${key}`).join("");
-        }
-        return "\n\n## Credits" +
-            "\n\nThe following resources where important for this project." +
-            "\n\n- [Readme Generator](https://github.com/bowseruk/readme-generator-nodejs) for generating the readme."
-    }
-    // This version is for HTML preview
-    get creditsHTML() {
-        if (this._credits) {
-            return `<h2 id = "demo-credits">Credits</h2>
-                <p>The following resources where important for this project.</p>
-                <ul>
-                <li><a href="https://github.com/bowseruk/readme-generator-nodejs">Readme Generator</a> for generating the readme.</li>` +
-                this._credits.map(key => `<li>${key}</li>`).join("") +
-                `</ul>`
-        }
-        return `<h2 id = "demo-credits">Credits</h2>
-        <p>The following resources where important for this project.</p>
-        <ul>
-        <li><a href="https://github.com/bowseruk/readme-generator-nodejs">Readme Generator</a> for generating the readme.</li></ul>`
-    }
-    // This makes the licence section
-    get license() {
-        if ((!this._licenseFile) && (!this._license)) {
-            return "";
-        }
-        return `\n\n## License`.concat(
-            (this._badgeURL) ? `\n\n![${this._license}](${this._badgeURL})` : "",
-            (this._license) ? `\n\nThis project is licensed under [${this._license}](${this._licenseURL})` : "",
-            (this._licenseFile) ? `\n\nThis full license used by the project is in the LICENSE file of the repo.` : "");
-    }
-    // This version is for HTML preview
-    get licenseHTML() {
-        if ((!this._licenseFile) && (!this._license)) {
-            return "";
-        }
-        return `<h2 id="demo-license">License</h2>`.concat(
-            (this._badgeURL) ? `<img alt=${this._license} src="${this._badgeURL}">` : "",
-            (this._license) ? `<p>This project is licensed under <a href="${this._licenseURL}">${this._license}</a></p>` : "",
-            (this._licenseFile) ? `<p>This full license used by the project is in the LICENSE file of the repo.</p>` : "");
-    }
-    // This makes the questions section
-    get questions() {
-        if (this._questions && (this._contactEmail || this._contactGithub)) {
-            return `\n\n## Questions\n\nPlease contact me with any questions by:`.concat(
-                (this._contactEmail) ? `\n\n- Email: ${this._contactEmail}` : "",
-                (this._contactGithub) ? `\n\n- Github Discussion - Add a discussion to this repo.` : ""
-            )
-        }
-        return "";
-    }
-    // This version is for HTML preview
-    get questionsHTML() {
-        if (this._questions && (this._contactEmail || this._contactGithub)) {
-            return `<h2 id="demo-questions">Questions</h2><p>Please contact me with any questions by:</p><ul>`.concat(
-                (this._contactEmail) ? `<li>Email: ${this._contactEmail}</li>` : "",
-                (this._contactGithub) ? `<li>Github Discussion - Add a discussion to this repo.</li>` : ""
-            ) +
-                `</ul>`
-        }
-        return "";
-    }
+    // Getters
     // This puts all the sections together to make a new readme
     get readme() {
-        return this.descriptionSection +
-            this.contents +
-            this.installation +
-            this.usage +
-            this.features +
-            this.contribute +
-            this.tests +
-            this.credits +
-            this.license +
-            this.questions
+        return this.renderReadme(false);
     }
     get readmeHTML() {
-        return this.descriptionSectionHTML +
-            this.contentsHTML +
-            this.installationHTML +
-            this.usageHTML +
-            this.featuresHTML +
-            this.contributeHTML +
-            this.testsHTML +
-            this.creditsHTML +
-            this.licenseHTML +
-            this.questionsHTML
+            return this.renderReadme(true);
     }
 }
