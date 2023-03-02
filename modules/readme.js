@@ -201,7 +201,7 @@ export default class ReadmeObject {
         }
         return this.makeHeader(`License`, html).concat(
             (this._badgeURL) ? this.makeImg(this._badgeURL, this._license, html) : "",
-            (this._license) ? this.makeLine(`This project is licensed under ${this.makeLink(this._licenseURL, this._license, html)}`, html) : "",
+            (this._license) ? this.makeLine(`This project is licensed under the ${this.makeLink(this._licenseURL, this._license, html)} license.`, html) : "",
             (this._licenseFile) ? this.makeLine(`This full license used by the project is in the LICENSE file of the repo.`, html) : ""
         );
     }
