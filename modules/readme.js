@@ -188,7 +188,7 @@ export default class ReadmeObject {
     // This is the backend function for html and markdown
     renderCredits(html) {
         return this.makeHeader("Credits", html) +
-            this.makeLine("The following resources where important for this project.", html) +
+            this.makeLine("The following resources were important for this project.", html) +
             this.makeList(
                 this.makeListObject(`${this.makeLink("https://github.com/bowseruk/readme-generator-nodejs", "Readme Generator", html)} for generating the readme.`, html).concat(
                     (this._credits) ? this._credits.map(key => this.makeListObject(key, html)).join("") : "")

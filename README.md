@@ -84,7 +84,7 @@ There are currently no tests for this project.
 
 ## Credits
 
-The following resources where important for this project.
+The following resources were important for this project.
 
 - [Readme Generator](https://github.com/bowseruk/readme-generator-nodejs) for generating the readme.
 
@@ -110,7 +110,7 @@ The following resources where important for this project.
 
 ![MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)
 
-This project is licensed under [MIT](https://opensource.org/licenses/MIT)
+This project is licensed under the [MIT](https://opensource.org/licenses/MIT) license.
 
 This full license used by the project is in the LICENSE file of the repo.
 
