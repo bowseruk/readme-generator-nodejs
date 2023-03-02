@@ -49,12 +49,10 @@ const featuresQuestions = [
 const contributeQuestions = [
     new Question("input", "contribute", "Describe how to contribute to the project, or type none to not include anything:")
 ]
-
 // These are the questions for the contents section of the readme
 const testsQuestions = [
     new Question("input", "test", "Describe a test used on the project, or type end to move to the next question:"),
 ]
-
 // These are the questions for the contents section of the readme
 const creditsQuestions = [
     new Question("confirm", "w3v", "Credit W3 Validator?"),
@@ -65,8 +63,8 @@ const creditsQuestions = [
     new Question("confirm", "fontAwesome", "Credit Font Awesome?"),
     new Question("confirm", "jQuery", "Credit JQuery?"),
     new Question("confirm", "inquirer", "Credit Inquirer?"),
-    new Question("confirm", "nodejs", "Credit Node.js?")
-    // new Question("input", "numberOfCredits", "How many additional credits does the project have?")
+    new Question("confirm", "nodejs", "Credit Node.js?"),
+    new Question("confirm", "jest", "Credit Jest.js?")
 ]
 // These are the questions for the contents section of the readme
 const addCredit = [
@@ -83,7 +81,7 @@ const questionsQuestions = [
     new Question("input", "email", "Type a contact email, or type none to skip:"),
     new Question("input", "githubProfile", "Type a Github Username, or type none to skip:")
 ]
-
+// This is the function for the description section
 function descriptionSection() {
     inquirer
         .prompt([
@@ -107,7 +105,7 @@ function descriptionSection() {
             }
         });
 }
-
+// This is the recursive function for the description list section
 function descriptionListSection() {
     inquirer
         .prompt([
@@ -131,7 +129,7 @@ function descriptionListSection() {
             }
         });
 }
-
+// This is the function for the contents section
 function contentsSection() {
     inquirer
         .prompt([
@@ -152,7 +150,7 @@ function contentsSection() {
             }
         });
 }
-
+// This is the function for the installation section
 function installationSection() {
     inquirer
     .prompt([
@@ -178,7 +176,7 @@ function installationSection() {
         }
     });
 }
-
+// This is the function for the usage section
 function usageSection() {
     inquirer
     .prompt([
@@ -213,7 +211,7 @@ function usageSection() {
         }
     });
 }
-
+// This is the recursive function for the features section to allow dynamic sizing of features
 function featuresSections() {
     inquirer
     .prompt([
@@ -237,7 +235,7 @@ function featuresSections() {
         }
     });
 }
-
+// This is the function for the contribution section
 function contributeSections() {
     inquirer
     .prompt([
@@ -264,7 +262,7 @@ function contributeSections() {
         }
     });
 }
-
+// This is the function for the tests section
 function testsSections() {
     inquirer
     .prompt([
@@ -288,7 +286,7 @@ function testsSections() {
         }
     });
 }
-
+// This is the function for the credits section
 function creditsSections() {
     inquirer
     .prompt([
@@ -325,6 +323,9 @@ function creditsSections() {
         if (answers.nodejs) {
             readmeInput.credits.push("[Node.js](https://nodejs.org/) was used in the project, following documentation from their site.")
         }
+        if (answers.jest) {
+            readmeInput.credits.push("[Jest.js](https://jestjs.io/) was used as a testing framework for the project, following documentation from their site.")
+        }
         customCredits();
     })
     .catch((error) => {
@@ -335,7 +336,7 @@ function creditsSections() {
         }
     });
 }
-
+// This is the recursive function for the custom credits section
 function customCredits() {
     inquirer
     .prompt([
@@ -359,7 +360,7 @@ function customCredits() {
         }
     }); 
 }
-
+// This is the function for the licensen section
 function licenseSection() {
     inquirer
     .prompt([
@@ -384,7 +385,7 @@ function licenseSection() {
         }
     });
 }
-
+// This is the function for the questions section
 function questionsSection() {
     inquirer
     .prompt([
@@ -419,13 +420,12 @@ function questionsSection() {
         }
     });
 }
-
+// This function is called at the end of the questions.
 async function endOfChain() {
     // console.log(readmeInput);
     let readme = new ReadmeObject(readmeInput);
     await writeToFile("output/readme.md", readme.readme);
 }
-
 // function to write README file
 async function writeToFile(fileName, data) {
     try {
@@ -434,13 +434,11 @@ async function writeToFile(fileName, data) {
         console.log(err);
     }
 }
-
 // function to initialize program
 function init() {
     // First Section
     descriptionSection();
 }
-
 // function call to initialize program
 init();
 

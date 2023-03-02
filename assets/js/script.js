@@ -172,6 +172,7 @@ function readInputs() {
     addCredit("j-query", "[JQuery](https://jquery.com/) documentation was referred to throughout the project.");
     addCredit("inquirer", "The [Inquirer](https://www.npmjs.com/package/inquirer) package was used with node.js, following the documentation.");
     addCredit("node-js", "[Node.js](https://nodejs.org/) was used in the project, following documentation from their site.");
+    addCredit("jest", "[Jest.js](https://jestjs.io/) was used as a testing framework for the project, following documentation from their site.");
     // Tests
     input.tests = readDynamicField("Test", tests);
     // License
