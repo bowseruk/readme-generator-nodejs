@@ -109,7 +109,9 @@ export default class ReadmeObject {
         return "";
     }
     renderDiscription(html) {
-        return this.makeTitle(this._title, html) +
+        return this.makeTitle(this._title, html).concat(
+            (this._badgeURL) ? this.makeImg(this._badgeURL, this._license, html) : ""
+        ) +
             this.makeHeader("Description", html) +
             this.makeLine(this._description, html) +
             this.renderDescriptionList(html);
@@ -205,7 +207,7 @@ export default class ReadmeObject {
     }
     // This function does the work for the getters - more maintainable, as html and markdown come from same function.
     renderQuestion(html) {
-        if (this._questions && (this._contactEmail || this._contactGithub)) {
+        if (this._questions && (this._contactEmail || this._contactGithub || this._githubProfile)) {
             return this.makeHeader("Questions", html) +
                 this.makeLine("Please contact me with any questions by:") +
                 this.makeList(
