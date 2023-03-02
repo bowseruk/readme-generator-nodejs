@@ -1,11 +1,12 @@
-Markdown Preview
 # Bootcamp Challenge 11 - Readme Generator
 
 ![MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)
 
 ## Description
 
-This project was created using node.js with the fs and inquirer modules to make a command-line tool that generates a HTML portfolio page generator. I also added a webpage using the same module to make a different method of creating the readme.
+This project was created using node.js with the fs and inquirer modules to make a command-line tool that generates a professional readme.
+
+I also added a webpage using the same custom module to make a different method of creating the readme.
 
 The project had the following requirements:
 
@@ -47,9 +48,9 @@ The project had the following requirements:
 
 ## Installation
 
-To use the node.js module. You first must install node.js. Instruction can be found at the node.js link in the credits section of this readme. You then run npm install in the root of this project.
+For node.js, install node.js as per the instructions on its webpage. This can be found in the credits section. Once it is installed, run "npm install" on the root of the project folder in a terminal window. Once this is complete run "node index.js".
 
-The webpage can be used from the link.
+For the web-based option, just go to the [website](https://bowseruk.github.io/readme-generator-nodejs/).
 
 ## Usage
 
@@ -57,9 +58,9 @@ A screenshot of the project can be seen below:
 
 ![Screenshot](./assets/images/screenshot.png)
 
-A walkthrough video of the project can be seen at [this link](tbc)
+A walkthrough video of the project can be seen at [this link](https://youtu.be/CzYmF4DcMDI)
 
-To use the node.js module, go to the root folder and run node index.js. Answer the prompts as you want the answers to appear on the readme file. After answering all the questions the readme will be generated in the output folder as readme.md.
+To use the node.js module, go to the root folder and run "node index.js". Answer the prompts as you want the answers to appear on the readme file. After answering all the questions the readme will be generated in the output folder as readme.md.
 
 To use the browser, go to the [website](https://bowseruk.github.io/readme-generator-nodejs/) and fill in the fields. Once the preview looks good, press the download button.
 
@@ -103,11 +104,13 @@ The following resources where important for this project.
 
 - The [Inquirer](https://www.npmjs.com/package/inquirer) package was used with node.js, following the documentation.
 
+- [Node.js](https://nodejs.org/) was used in the project, following documentation from their site.
+
 ## License
 
 ![MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)
 
-This project is licensed under the [MIT](https://opensource.org/licenses/MIT) license.
+This project is licensed under [MIT](https://opensource.org/licenses/MIT)
 
 This full license used by the project is in the LICENSE file of the repo.
 
@@ -115,4 +118,6 @@ This full license used by the project is in the LICENSE file of the repo.
 
 Please contact me with any questions by:
 
-- Github Discussion - Add a discussion to this repo.
+- Github Discussion: Add a discussion to this repo.
+
+- My Github Username is [BowserUK](https://github.com/bowseruk): Feel free to find more contact details or browse my other Repos.
