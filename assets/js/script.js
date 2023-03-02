@@ -90,6 +90,7 @@ function showField(name, flag) {
     $(`#${name}`).show().val("");
     return true;
 }
+// This areas hide if the checkbox is not checked
 function hideInstallation() {
     let flag = readCheckbox("installation");
     showField("installation-instructions-div", flag);
@@ -112,6 +113,12 @@ function hideQuestions() {
     showField("email-div", flag);
     showField("github-profile-div", flag);
 }
+// Hide the download button unless a title is input
+function hideDownload() {
+    let flag = (readField("title").length > 0);
+    showField("download-section", flag);
+}
+
 // Helper functions to read fields
 function readField(name) {
     return $(`#${name.toLowerCase()}`).val();
@@ -193,11 +200,12 @@ $('form').change(function () {
     let readme = readInputs();
     $('#markdown').html(readme.readme.split('\n').join("<br>"))
     $('#html-preview').html(readme.readmeHTML)
-    $('#download-button').on("click", (event) => {
-        event.stopPropagation();
-        download(readme.readme, "text/markdown", "readme.md");
-    })
 });
+// Button event listener moved due to issues
+$('#download-button').on("click", (event) => {
+    event.stopPropagation();
+    download(readInputs().readme, "text/markdown", "readme.md");
+})
 // Startup function
 function init() {
     hideInstallation()
@@ -205,6 +213,7 @@ function init() {
     hideVideo()
     hideContribution()
     hideQuestions()
+    hideDownload()
 }
-
+// Start init function
 init();
